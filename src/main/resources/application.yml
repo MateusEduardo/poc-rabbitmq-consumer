@@ -1,0 +1,31 @@
+spring:
+  profiles:
+    active:
+    - dev
+---
+server:
+  port: 4321
+  
+spring:
+  application:
+    name: consumer
+  profiles: dev
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: create
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/poc_rabbit?useTimezone=true&serverTimezone=UTC
+    username: root
+    password: toor
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    
+logging:
+  level:
+    org.hibernate.type: trace
